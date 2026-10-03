@@ -214,8 +214,8 @@ select_elements_app <- function(df) {
         summary_df <- dat %>%
           dplyr::group_by(semester = resolved_semester) %>%
           dplyr::summarise(
-            credits = sum(credits[!resolved_optional], na.rm = TRUE),
             optional = sum(credits[resolved_optional], na.rm = TRUE),
+            credits = sum(credits[!resolved_optional], na.rm = TRUE),
             .groups = "drop"
           ) %>%
           dplyr::arrange(semester)
